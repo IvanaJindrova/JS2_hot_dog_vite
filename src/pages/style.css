@@ -1,9 +1,11 @@
-.topping--selected {
-    color: green;
-    font-size: 16px;
-    background-color: rgb(211, 211, 211); 
-    margin-top: 20px; 
-    padding: 10px; 
-    border: 1px solid black;
-
-}
+.topping {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  .topping--selected {
+    background-color: yellow;
+    border-color: orange;
+  }

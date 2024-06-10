@@ -13,21 +13,14 @@ export const toppings = [
   export const toggleTopping = (index) => {
     const topping = toppings[index];
     topping.selected = !topping.selected;
+    //renderToppings()
 }
 
   export const renderToppings = (toppings) => {
     const toppingsVsechny = document.getElementById('toppings-vsechny');
     const toppingElements = toppingsVsechny.querySelectorAll('.topping');
 
-    toppingElements.forEach((toppingElement, index) => {
-        toppingElement.addEventListener('click', () => {
-            toggleTopping(index)
-        });
-    });
-
     toppingsVsechny.innerHTML = '';
-
-    
 
     toppings.forEach(topping => {
         const toppingDiv = document.createElement('div');
@@ -47,6 +40,14 @@ export const toppings = [
         toppingDiv.appendChild(priceP);
 
         toppingsVsechny.appendChild(toppingDiv);
+
+        toppingElements.forEach((toppingElement, index) => {
+            toppingElement.addEventListener('click', () => {
+                toggleTopping(index)
+            });
+            renderToppings()
+        });
+
     });
 }
 

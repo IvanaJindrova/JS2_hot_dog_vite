@@ -8,20 +8,20 @@ export const toppings = [
     { name: 'Chilli', price: 5, selected: false },
     { name: 'Sýr', price: 10, selected: false },
     { name: 'Slanina', price: 10, selected: false },
-  ];
+];
 
-  export const toggleTopping = (index) => {
+export const toggleTopping = (index) => {
     const topping = toppings[index];
     topping.selected = !topping.selected;
-    renderToppings(toppings)
+    renderToppings(toppings);
 }
 
-  export const renderToppings = (toppings) => {
+export const renderToppings = (toppings) => {
     const toppingsVsechny = document.getElementById('toppings-vsechny');
 
     toppingsVsechny.innerHTML = '';
 
-    toppings.forEach(topping => {
+    toppings.forEach((topping, index) => {
         const toppingDiv = document.createElement('div');
         toppingDiv.classList.add('topping');
 
@@ -38,18 +38,14 @@ export const toppings = [
         toppingDiv.appendChild(nameH3);
         toppingDiv.appendChild(priceP);
 
-        toppingsVsechny.appendChild(toppingDiv);
-
-        const toppingElements = toppingsVsechny.querySelectorAll('.topping');
-
-        toppingElements.forEach((toppingElement, index) => {
-            toppingElement.addEventListener('click', () => {
-                toggleTopping(index)
-                renderToppings(toppings)
-            });
-
+        toppingDiv.addEventListener('click', () => {
+            toggleTopping(index);
         });
 
+        toppingsVsechny.appendChild(toppingDiv);
     });
 }
 
+window.onload = () => {
+    renderToppings(toppings);
+};
